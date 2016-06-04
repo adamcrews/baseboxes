@@ -60,7 +60,6 @@
         "scripts/centos/prereq.sh",
         "scripts/centos/tools.sh",
         "scripts/centos/6/ruby_prereq.sh",
-        "scripts/centos/6/cleanup-devtools.sh",
         "scripts/centos/6/cleanup-ruby.sh",
         "scripts/centos/6/cleanup.sh",
         "scripts/common/minimize.sh"
@@ -69,15 +68,15 @@
     }
   ],
   "variables": {
-    "box_basename": "centos-6-puppet",
+    "box_basename": "centos-6-ruby",
     "build_timestamp": "{{isotime \"20060102150403\"}}",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "name": "centos-6-puppet",
+    "name": "centos-6-ruby",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-6-puppet",
+    "template": "centos-6-ruby",
     "version": "0.0.TIMESTAMP"
   }
 }
