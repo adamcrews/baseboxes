@@ -15,15 +15,22 @@ $orig_packageset =
     'unzip',
     'byacc'
   ]
+$homedir = '/home/vagrant'
+$package_root = 'ruby2'
+$version = '2.3.1'
+$release = '1'
 
-if $facts['os']['release']['major'] == 7 {
+if $facts['os']['release']['major'] == '7' {
   $packageset = $orig_packageset + 'compat-db47'
-}
-else {
+  $packagevar = "${facts['os']['release']['major']}.centos.x86_64"
+} else {
   $packageset = $orig_packageset + 'db4-devel'
+  $packagevar = "${facts['os']['release']['major']}.x86_64"
 }
 
-package { $orig_packageset: } ->
+$packagename = "${homedir}/rpmbuild/RPMS/x86_64/${package_root}-${version}-${release}.el${packagevar}.rpm"
+
+package { $packageset: } ->
 
 file {
   [
@@ -53,12 +60,12 @@ exec { 'build ruby rpm':
   command => '/usr/bin/rpmbuild -ba --define "_topdir /home/vagrant/rpmbuild" /home/vagrant/rpmbuild/SPECS/ruby.spec',
   user    => 'vagrant',
   cwd     => '/home/vagrant',
-  creates => "/home/vagrant/rpmbuild/RPMS/x86_64/ruby2-2.3.1-1.el${facts['os']['release']['major']}.x86_64.rpm",
+  creates => $packagename,
   timeout => 0,
 } ->
 
 exec { 'install ruby rpm':
-  command => "/usr/bin/yum -y localinstall /home/vagrant/rpmbuild/RPMS/x86_64/ruby2-2.3.1-1.el${facts['os']['release']['major']}.x86_64.rpm",
+  command => "/usr/bin/yum -y localinstall ${packagename}",
 } ->
 
 exec { 'install minimal gems':
