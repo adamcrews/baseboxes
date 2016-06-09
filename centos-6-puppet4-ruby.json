@@ -64,8 +64,7 @@
       "scripts": [
         "scripts/centos/prereq.sh",
         "scripts/centos/tools.sh",
-        "scripts/centos/6/ruby_prereq.sh",
-        "scripts/common/ruby.sh",
+        "scripts/centos/6/ruby.sh",
         "scripts/centos/6/cleanup-ruby.sh",
         "scripts/centos/6/cleanup.sh",
         "scripts/common/minimize.sh"

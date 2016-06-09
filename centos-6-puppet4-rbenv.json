@@ -73,15 +73,15 @@
     }
   ],
   "variables": {
-    "box_basename": "centos-6-puppet-rbenv",
+    "box_basename": "centos-6-puppet4-rbenv",
     "build_timestamp": "{{isotime \"20060102150403\"}}",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "name": "centos-6-puppet-rbenv",
+    "name": "centos-6-puppet4-rbenv",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-6-puppet-rbenv",
+    "template": "centos-6-puppet4-rbenv",
     "version": "0.0.TIMESTAMP"
   }
 }
